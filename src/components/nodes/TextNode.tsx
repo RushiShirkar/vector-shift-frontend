@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react';
 import { Handle, NodeProps, Position } from 'reactflow';
-import { NodeCard } from './NodeCard';
-import { SourceRight } from './handles';
+import { NodeCard, SourceRight } from './shared';
 import { Textarea } from '../common/Textarea';
 import { TextNodeData } from '../../types/nodes';
+import { MessageSquare } from 'lucide-react';
 
 export const TextNode: React.FC<NodeProps<TextNodeData>> = ({ id, data }) => {
   const [currText, setCurrText] = useState<string>(data?.text || '{{input}}');
@@ -18,7 +18,13 @@ export const TextNode: React.FC<NodeProps<TextNodeData>> = ({ id, data }) => {
   }, [currText]);
 
   return (
-    <NodeCard title="Text" style={{ width: Math.min(400, 200 + Math.floor(currText.length / 15) * 20) }}>
+    <NodeCard 
+      title="Text" 
+      style={{ width: Math.min(250, 200 + Math.floor(currText.length / 15) * 20) }}
+      icon={MessageSquare}
+      description="Generate text, images, or code using AI"
+      nodeId={id}
+    >
       <Textarea
         label="Text"
         aria-label="Text value"
@@ -38,4 +44,3 @@ export const TextNode: React.FC<NodeProps<TextNodeData>> = ({ id, data }) => {
     </NodeCard>
   );
 };
-

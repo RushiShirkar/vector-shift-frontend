@@ -18,15 +18,15 @@ export const PipelineToolbar: React.FC = () => {
   }, [tab, query]);
 
   return (
-    <div className="py-3 px-8 bg-gray-50">
-      <div className="flex items-center gap-6 mb-3">
+    <div className="py-2 px-4 bg-gray-50 md:px-8">
+      <div className="flex items-center gap-4 mb-3">
         <Input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search Nodes"
-          className="h-8"
-          containerClassName="w-48"
-          leftIcon={<Search className="w-4 h-4" />}
+          className="h-6 font-normal text-xs"
+          containerClassName="w-[172px]"
+          leftIcon={<Search className="w-3 h-3" />}
         />
         <Tabs tabs={tabs} value={tab} onChange={(v) => setTab(v as 'start' | 'other')} size="sm" />
       </div>

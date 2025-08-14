@@ -3,21 +3,23 @@ import ReactFlow, { Background, Controls, MiniMap, BackgroundVariant } from 'rea
 import { shallow } from 'zustand/shallow';
 import type { State } from 'redux/store';
 import { useStore } from 'redux/store';
-import { InputNode, LLMNode, OutputNode, TextNode, PromptNode, DelayNode, MathNode, IfNode } from '../nodes';
+import { InputNode, LLMNode, OutputNode, TextNode, PromptNode, DelayNode, MathNode, IfNode, NoteNode } from '../nodes';
 import 'reactflow/dist/style.css';
 
 const gridSize = 20;
 const proOptions = { hideAttribution: true } as const;
-const nodeTypes = {
-  customInput: InputNode,
-  llm: LLMNode,
-  customOutput: OutputNode,
-  text: TextNode,
-  prompt: PromptNode,
-  delay: DelayNode,
-  math: MathNode,
-  if: IfNode,
-};
+  const nodeTypes = {
+    customInput: InputNode,
+    llm: LLMNode,
+    customOutput: OutputNode,
+    text: TextNode,
+    prompt: PromptNode,
+    delay: DelayNode,
+    math: MathNode,
+    if: IfNode,
+    condition: IfNode,
+    note: NoteNode,
+  };
 
 export const PipelineUI: React.FC = () => {
   const reactFlowWrapper = useRef<HTMLDivElement | null>(null);

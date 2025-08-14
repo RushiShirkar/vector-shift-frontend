@@ -1,11 +1,10 @@
 import { NodeProps } from 'reactflow';
-import { NodeCard } from './NodeCard';
-import { SourceRight, TargetLeft } from './handles';
+import { NodeCard, SourceRight, TargetLeft } from './shared';
 import { Select } from '../common/Select';
 
 export const MathNode: React.FC<NodeProps<{ id: string; nodeType: 'math'; op?: string }>> = ({ id }) => {
   return (
-    <NodeCard title="Math">
+    <NodeCard title="Math" nodeId={id}>
       <TargetLeft id={`${id}-a`} topPct={33} />
       <TargetLeft id={`${id}-b`} topPct={66} />
       <Select label="Operation" defaultValue={"add"}>

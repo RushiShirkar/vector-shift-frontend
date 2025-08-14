@@ -6,4 +6,6 @@ export * from './PromptNode';
 export * from './DelayNode';
 export * from './MathNode';
 export * from './IfNode';
+export * from './NoteNode';
+export * from './shared';
 

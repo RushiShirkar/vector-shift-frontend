@@ -49,7 +49,7 @@ export const Tabs: React.FC<TabsProps> = ({ tabs, value, onChange, className, si
         ref={listRef}
         role="tablist"
         aria-orientation="horizontal"
-        className="flex items-center gap-4"
+        className="flex items-center gap-3"
         onKeyDown={onKeyDown}
       >
         {tabs.map((tab, idx) => {
@@ -63,7 +63,7 @@ export const Tabs: React.FC<TabsProps> = ({ tabs, value, onChange, className, si
               aria-selected={isActive}
               aria-controls={`${idBase}-${tab.id}-panel`}
               className={clsx(
-                'relative pb-1 leading-none focus:outline-none inline-flex items-center h-8 px-2',
+                'relative pb-1 leading-none focus:outline-none inline-flex items-center h-6 px-2',
                 textSize,
                 isActive ? 'text-brand-500 font-medium' : 'text-gray-800 hover:text-brand-500'
               )}
@@ -73,7 +73,7 @@ export const Tabs: React.FC<TabsProps> = ({ tabs, value, onChange, className, si
               <span
                 aria-hidden
                 className={clsx(
-                  'pointer-events-none absolute inset-x-0 bottom-0 h-[2px] transition-colors',
+                  'pointer-events-none absolute inset-x-0 bottom-0 h-[1.5px] transition-colors',
                   isActive ? 'bg-brand-500' : 'bg-transparent'
                 )}
               />

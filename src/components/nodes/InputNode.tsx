@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NodeProps } from 'reactflow';
-import { NodeCard } from './NodeCard';
-import { SourceRight } from './handles';
+import { NodeCard, SourceRight } from './shared';
+import { LogIn } from 'lucide-react';
 import { Input } from '../common/Input';
 import { Select } from '../common/Select';
 import { InputNodeData } from '../../types/nodes';
@@ -11,7 +11,12 @@ export const InputNode: React.FC<NodeProps<InputNodeData>> = ({ id, data }) => {
   const [inputType, setInputType] = useState<InputNodeData['inputType']>(data.inputType || 'Text');
 
   return (
-    <NodeCard title="Input">
+    <NodeCard
+      title="Input"
+      icon={LogIn}
+      description="Pass data of different types into your workflow"
+      nodeId={id}
+    >
       <div className="space-y-2">
         <div className="flex items-center gap-2">
           <Input 

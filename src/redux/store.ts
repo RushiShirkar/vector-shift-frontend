@@ -7,6 +7,7 @@ export type State = {
   nodeIDs: Record<string, number>;
   getNodeID: (type: string) => string;
   addNode: (node: Node) => void;
+  removeNode: (nodeId: string) => void;
   onNodesChange: (changes: NodeChange[]) => void;
   onEdgesChange: (changes: EdgeChange[]) => void;
   onConnect: (connection: Connection) => void;
@@ -19,17 +20,31 @@ export const useStore = create<State>((set, get) => ({
   edges: [],
   nodeIDs: {},
   getNodeID: (type) => {
-    const newIDs = { ...get().nodeIDs };
-    if (newIDs[type] === undefined) {
-      newIDs[type] = 0;
+    // Compute the smallest available positive integer suffix for this type
+    const usedNumbers = new Set<number>();
+    for (const node of get().nodes) {
+      if ((node as any).type === type) {
+        const match = /-(\d+)$/.exec(node.id);
+        if (match) usedNumbers.add(Number(match[1]));
+      }
     }
-    newIDs[type] += 1;
+    let next = 1;
+    while (usedNumbers.has(next)) next += 1;
+
+    // Keep nodeIDs map in sync for visibility/debugging, though generation is scan-based
+    const newIDs = { ...get().nodeIDs, [type]: next } as Record<string, number>;
     set({ nodeIDs: newIDs });
-    return `${type}-${newIDs[type]}`;
+    return `${type}-${next}`;
   },
   addNode: (node) => {
     set({
       nodes: [...get().nodes, node],
+    });
+  },
+  removeNode: (nodeId) => {
+    set({
+      nodes: get().nodes.filter((n) => n.id !== nodeId),
+      edges: get().edges.filter((e) => e.source !== nodeId && e.target !== nodeId),
     });
   },
   onNodesChange: (changes) => {

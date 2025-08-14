@@ -1,3 +1,4 @@
+import { PanelRightClose } from 'lucide-react';
 import { SubmitButton } from '../ui/SubmitButton';
 
 export const AppHeader: React.FC<{ onSubmitError?: (text: string) => void }> = ({ onSubmitError }) => {
@@ -7,14 +8,17 @@ export const AppHeader: React.FC<{ onSubmitError?: (text: string) => void }> = (
     >
       <div className="px-3">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 text-xs text-gray-600">
-            <span className="inline-flex items-center gap-1">
-              <span className="i ri:stack-line" />
-              Pipelines
-            </span>
-            <span>›</span>
-            <span className="truncate max-w-[16rem]">Copy of Search a Knowledge Bas...</span>
-            <span className="ml-2 rounded-md px-1.5 py-0.5 bg-gray-100 text-gray-700">Edit</span>
+          <div className="flex items-center gap-2">
+            <PanelRightClose className="w-4 h-4" />
+            <div className="flex items-center gap-2 text-xs text-gray-600">
+              <span className="inline-flex items-center gap-1">
+                <span className="i ri:stack-line" />
+                Pipelines
+              </span>
+              <span>›</span>
+              <span className="truncate max-w-[16rem]">Knowledge Base...</span>
+              <span className="ml-2 rounded-md px-1.5 py-0.5 bg-gray-100 text-gray-700">Edit</span>
+            </div>
           </div>
           <div className="flex items-center gap-2 py-2">
             <SubmitButton onError={onSubmitError} />
