@@ -5,10 +5,11 @@ import { useParsePipelineMutation, type ParseResponse } from '../../services/pip
 import { SuccessModal } from './SuccessModal';
 
 export const SubmitButton: React.FC<{ onError?: (text: string) => void }> = ({ onError }) => {
-  const { nodes, edges } = 
+  const { nodes, edges, resetGraph } = 
     useStore((s: State) => ({ 
       nodes: s.nodes, 
       edges: s.edges, 
+      resetGraph: s.resetGraph,
     }));
   const [open, setOpen] = useState<boolean>(false);
   const [data, setData] = useState<ParseResponse | null>(null);
@@ -19,7 +20,7 @@ export const SubmitButton: React.FC<{ onError?: (text: string) => void }> = ({ o
       const resp = await mutateAsync({ body: { nodes, edges } });
       setData(resp);
       setOpen(true);
-      //resetGraph();
+      resetGraph();
     } catch (err: any) {
       if (onError) {
         const message = err?.message || 'Failed to parse pipeline';
