@@ -5,10 +5,15 @@ import { parsePipeline, type ParseResponse } from '../../services/pipelines';
 import { SuccessModal } from './SuccessModal';
 
 export const SubmitButton: React.FC<{ onError?: (text: string) => void }> = ({ onError }) => {
-  const { nodes, edges, resetGraph } = useStore((s: State & { resetGraph: () => void }) => ({ nodes: s.nodes, edges: s.edges, resetGraph: (s as any).resetGraph }));
-  const [open, setOpen] = useState(false);
+  const { nodes, edges, resetGraph } = 
+    useStore((s: State & { resetGraph: () => void }) => ({ 
+      nodes: s.nodes, 
+      edges: s.edges, 
+      resetGraph: (s as any).resetGraph 
+    }));
+  const [open, setOpen] = useState<boolean>(false);
   const [data, setData] = useState<ParseResponse | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const onClick = async () => {
     setLoading(true);
@@ -39,7 +44,11 @@ export const SubmitButton: React.FC<{ onError?: (text: string) => void }> = ({ o
       >
         {loading && 
           <span 
-            className="h-3 w-3 mr-2 inline-block rounded-full border-2 border-white/70 border-t-transparent animate-spin align-[-2px]" 
+            className="
+              h-3 w-3 mr-2 inline-block rounded-full border-2 border-white/70 
+              border-t-transparent animate-spin align-[-2px]
+              bg-brand-500
+            " 
             aria-hidden="true"
         />}
         {loading ? 'Processing…' : 'Submit'}

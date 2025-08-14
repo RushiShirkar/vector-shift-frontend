@@ -22,4 +22,3 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     <button ref={ref} className={twMerge(clsx(base, styles[variant], className))} {...props} />
   );
 });
-

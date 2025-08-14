@@ -6,7 +6,7 @@ import { useStore } from 'redux/store';
 import { InputNode, LLMNode, OutputNode, TextNode, PromptNode, DelayNode, MathNode, IfNode, NoteNode } from '../nodes';
 import 'reactflow/dist/style.css';
 
-const gridSize = 20;
+const gridSize = 16;
 const proOptions = { hideAttribution: true } as const;
   const nodeTypes = {
     customInput: InputNode,

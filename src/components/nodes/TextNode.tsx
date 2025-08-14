@@ -7,6 +7,7 @@ import { MessageSquare } from 'lucide-react';
 
 export const TextNode: React.FC<NodeProps<TextNodeData>> = ({ id, data }) => {
   const [currText, setCurrText] = useState<string>(data?.text || '{{input}}');
+  
   const variables = useMemo(() => {
     const regex = /\{\{\s*([a-zA-Z_$][\w$]*)\s*\}\}/g;
     const found = new Set<string>();
@@ -22,7 +23,7 @@ export const TextNode: React.FC<NodeProps<TextNodeData>> = ({ id, data }) => {
       title="Text" 
       style={{ width: Math.min(250, 200 + Math.floor(currText.length / 15) * 20) }}
       icon={MessageSquare}
-      description="Generate text, images, or code using AI"
+      description="Add a text to your workflow with variables"
       nodeId={id}
     >
       <Textarea

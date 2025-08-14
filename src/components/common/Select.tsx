@@ -20,7 +20,7 @@ export const Select = forwardRef(function Select(
   const describedBy = [helperId, errorId].filter(Boolean).join(' ') || undefined;
 
   return (
-    <div className={clsx('flex flex-col text-xs text-gray-700 dark:text-gray-300', containerClassName)}>
+    <div className={clsx('flex flex-col text-xs text-gray-700', containerClassName)}>
       {label && (
         <label className="mb-1" htmlFor={selectId}>
           {label}
@@ -30,8 +30,8 @@ export const Select = forwardRef(function Select(
         ref={ref}
         id={selectId}
         className={twMerge(
-          'h-9 w-full mt-1 rounded-md border bg-white dark:bg-gray-900 text-sm px-2 pr-8 appearance-none',
-          'border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-1 focus:ring-brand-500',
+          'h-9 w-full mt-1 rounded-md border bg-white text-gray-900 text-sm px-2 pr-8 appearance-none',
+          'border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-500',
           error ? 'border-red-500 focus:ring-red-500' : '',
           className
         )}

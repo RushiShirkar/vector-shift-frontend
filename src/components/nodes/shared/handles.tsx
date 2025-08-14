@@ -24,5 +24,3 @@ export const TargetLeft: React.FC<{ id: string; topPct?: number }> = ({ id, topP
     className="w-2 h-2"
   />
 );
-
-

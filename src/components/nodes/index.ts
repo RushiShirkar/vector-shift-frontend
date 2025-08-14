@@ -8,4 +8,3 @@ export * from './MathNode';
 export * from './IfNode';
 export * from './NoteNode';
 export * from './shared';
-

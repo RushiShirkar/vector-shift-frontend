@@ -1,10 +1,16 @@
 import { NodeProps } from 'reactflow';
 import { NodeCard, SourceRight, TargetLeft } from './shared';
 import { Select } from '../common/Select';
+import { Calculator } from 'lucide-react';
 
 export const MathNode: React.FC<NodeProps<{ id: string; nodeType: 'math'; op?: string }>> = ({ id }) => {
   return (
-    <NodeCard title="Math" nodeId={id}>
+    <NodeCard 
+      title="Math" 
+      icon={Calculator}
+      description="Perform mathematical operations"
+      nodeId={id}
+    >
       <TargetLeft id={`${id}-a`} topPct={33} />
       <TargetLeft id={`${id}-b`} topPct={66} />
       <Select label="Operation" defaultValue={"add"}>
@@ -16,4 +22,3 @@ export const MathNode: React.FC<NodeProps<{ id: string; nodeType: 'math'; op?: s
     </NodeCard>
   );
 };
-

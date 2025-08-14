@@ -18,4 +18,3 @@ export const LLMNode: React.FC<NodeProps<LlmNodeData>> = ({ id }) => {
     </NodeCard>
   );
 };
-

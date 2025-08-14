@@ -14,4 +14,3 @@ export const useDraggableNode = () => {
 
   return { onDragStart, onDragEnd };
 };
-

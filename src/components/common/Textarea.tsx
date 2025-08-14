@@ -30,7 +30,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
   }, [value, autoGrow]);
 
   return (
-    <div className={clsx('flex flex-col text-xs text-gray-700 dark:text-gray-300', containerClassName)}>
+    <div className={clsx('flex flex-col text-xs text-gray-700', containerClassName)}>
       {label && (
         <label className="mb-1" htmlFor={textareaId}>
           {label}
@@ -44,8 +44,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
         }}
         id={textareaId}
         className={clsx(
-          'min-h-[2rem] rounded-md border bg-white dark:bg-gray-900 text-sm px-2 py-1 resize-none',
-          'border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500',
+          'min-h-[2rem] rounded-md border bg-white text-sm px-2 py-1 resize-none',
+          'border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-500',
           error && 'border-red-500 focus:ring-red-500',
           className
         )}
@@ -67,4 +67,3 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
     </div>
   );
 });
-

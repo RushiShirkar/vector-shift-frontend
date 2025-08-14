@@ -7,9 +7,9 @@ export type ParseResponse = {
 };
 
 export const parsePipeline = (body: unknown) => {
-    return http<ParseResponse>('/pipelines/parse', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-    });
+  return http<ParseResponse>('/pipelines/parse', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
 };

@@ -25,12 +25,14 @@ export const PipelineToolbar: React.FC = () => {
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search Nodes"
           className="h-6 font-normal text-xs"
-          containerClassName="w-[172px]"
+          containerClassName="flex-shrink-0 w-[120px] md:w-[172px]"
           leftIcon={<Search className="w-3 h-3" />}
         />
-        <Tabs tabs={tabs} value={tab} onChange={(v) => setTab(v as 'start' | 'other')} size="sm" />
+        <div className="min-w-0 flex-1">
+          <Tabs tabs={tabs} value={tab} onChange={(v) => setTab(v as 'start' | 'other')} size="sm" />
+        </div>
       </div>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex gap-2 flex-nowrap overflow-x-auto md:flex-wrap md:overflow-x-visible scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent pb-1">
         {visibleNodes.map((n) => (
           <DraggableNode key={n.type} type={n.type} label={n.label} icon={n.icon} />
         ))}

@@ -5,7 +5,7 @@ import { Button } from '../components/common/Button';
 import { X, Plus } from 'lucide-react';
 
 export const BuilderPage: React.FC = () => {
-  const [showToolbar, setShowToolbar] = useState(true);
+  const [showToolbar, setShowToolbar] = useState<boolean>(true);
 
   return (
     <div className="h-full relative flex flex-col overflow-hidden">

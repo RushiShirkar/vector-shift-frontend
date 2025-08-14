@@ -45,11 +45,15 @@ export const Tabs: React.FC<TabsProps> = ({ tabs, value, onChange, className, si
 
   return (
     <div className={clsx('w-full', className)}>
+      <div className="relative">
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-white to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-white to-transparent" />
+      </div>
       <div
         ref={listRef}
         role="tablist"
         aria-orientation="horizontal"
-        className="flex items-center gap-3"
+        className="flex items-center gap-3 overflow-x-auto overscroll-x-contain scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent scroll-px-3"
         onKeyDown={onKeyDown}
       >
         {tabs.map((tab, idx) => {
@@ -63,7 +67,7 @@ export const Tabs: React.FC<TabsProps> = ({ tabs, value, onChange, className, si
               aria-selected={isActive}
               aria-controls={`${idBase}-${tab.id}-panel`}
               className={clsx(
-                'relative pb-1 leading-none focus:outline-none inline-flex items-center h-6 px-2',
+                'relative pb-1 leading-none focus:outline-none inline-flex items-center h-6 px-2 whitespace-nowrap',
                 textSize,
                 isActive ? 'text-brand-500 font-medium' : 'text-gray-800 hover:text-brand-500'
               )}

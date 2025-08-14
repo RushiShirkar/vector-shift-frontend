@@ -1,5 +1,15 @@
 import { create } from 'zustand';
-import { addEdge, applyEdgeChanges, applyNodeChanges, MarkerType, type Node, type Edge, type NodeChange, type EdgeChange, type Connection } from 'reactflow';
+import {
+  addEdge, 
+  applyEdgeChanges,
+  applyNodeChanges, 
+  MarkerType, 
+  type Node, 
+  type Edge, 
+  type NodeChange, 
+  type EdgeChange, 
+  type Connection 
+} from 'reactflow';
 
 export type State = {
   nodes: Node[];
@@ -20,7 +30,6 @@ export const useStore = create<State>((set, get) => ({
   edges: [],
   nodeIDs: {},
   getNodeID: (type) => {
-    // Compute the smallest available positive integer suffix for this type
     const usedNumbers = new Set<number>();
     for (const node of get().nodes) {
       if ((node as any).type === type) {
@@ -31,7 +40,6 @@ export const useStore = create<State>((set, get) => ({
     let next = 1;
     while (usedNumbers.has(next)) next += 1;
 
-    // Keep nodeIDs map in sync for visibility/debugging, though generation is scan-based
     const newIDs = { ...get().nodeIDs, [type]: next } as Record<string, number>;
     set({ nodeIDs: newIDs });
     return `${type}-${next}`;
@@ -79,4 +87,3 @@ export const useStore = create<State>((set, get) => ({
     set({ nodes: [], edges: [], nodeIDs: {} });
   },
 }));
-
