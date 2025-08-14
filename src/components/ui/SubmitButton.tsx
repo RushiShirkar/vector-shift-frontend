@@ -1,35 +1,30 @@
 import { Button } from '../common/Button';
 import { useStore, type State } from 'redux/store';
 import { useState } from 'react';
-import { parsePipeline, type ParseResponse } from '../../services/pipelines';
+import { useParsePipelineMutation, type ParseResponse } from '../../services/pipelines';
 import { SuccessModal } from './SuccessModal';
 
 export const SubmitButton: React.FC<{ onError?: (text: string) => void }> = ({ onError }) => {
-  const { nodes, edges, resetGraph } = 
-    useStore((s: State & { resetGraph: () => void }) => ({ 
+  const { nodes, edges } = 
+    useStore((s: State) => ({ 
       nodes: s.nodes, 
       edges: s.edges, 
-      resetGraph: (s as any).resetGraph 
     }));
   const [open, setOpen] = useState<boolean>(false);
   const [data, setData] = useState<ParseResponse | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const { mutateAsync, isPending } = useParsePipelineMutation();
 
   const onClick = async () => {
-    setLoading(true);
-
     try {
-      const resp = await parsePipeline({ nodes, edges });
+      const resp = await mutateAsync({ body: { nodes, edges } });
       setData(resp);
       setOpen(true);
-      resetGraph();
+      //resetGraph();
     } catch (err: any) {
       if (onError) {
         const message = err?.message || 'Failed to parse pipeline';
         onError(message);
       }
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -37,12 +32,12 @@ export const SubmitButton: React.FC<{ onError?: (text: string) => void }> = ({ o
     <>
       <Button
         onClick={onClick} 
-        disabled={loading} 
-        aria-busy={loading} 
+        disabled={isPending} 
+        aria-busy={isPending} 
         aria-live="polite" 
         variant="primary"
       >
-        {loading && 
+        {isPending && 
           <span 
             className="
               h-3 w-3 mr-2 inline-block rounded-full border-2 border-white/70 
@@ -51,7 +46,7 @@ export const SubmitButton: React.FC<{ onError?: (text: string) => void }> = ({ o
             " 
             aria-hidden="true"
         />}
-        {loading ? 'Processing…' : 'Submit'}
+        {isPending ? 'Processing…' : 'Submit'}
       </Button>
       <SuccessModal open={open} onClose={() => setOpen(false)} data={data} />
     </>
