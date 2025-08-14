@@ -1,4 +1,4 @@
-export const API_BASE_URL = 'https://vector-shift-backend-delta.vercel.app';
+export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const url = `${API_BASE_URL}${path}`.replace(/\/$/, '');
