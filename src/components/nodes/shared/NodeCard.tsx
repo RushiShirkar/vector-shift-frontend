@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { ReactNode, useState } from 'react';
 import { Maximize2, Minimize2, XCircle } from 'lucide-react';
-import { useStore } from '../../../redux/store';
+import { useStore } from '../../../zustand/store';
 import { Button } from '../../common/Button';
 import { SourceRight, TargetLeft } from './handles';
 

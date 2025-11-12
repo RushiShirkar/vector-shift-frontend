@@ -50,7 +50,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
           {...props}
         />
         {rightIcon && (
-          <span className="absolute inset-y-0 right-2 flex items-center text-gray-400 pointer-events-none">
+          <span className="absolute inset-y-0 right-2 flex items-center text-gray-400">
             {rightIcon}
           </span>
         )}

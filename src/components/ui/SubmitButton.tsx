@@ -1,5 +1,5 @@
 import { Button } from '../common/Button';
-import { useStore, type State } from 'redux/store';
+import { useStore, type State } from '../../zustand/store';
 import { useState } from 'react';
 import { useParsePipelineMutation, type ParseResponse } from '../../services/pipelines';
 import { SuccessModal } from './SuccessModal';

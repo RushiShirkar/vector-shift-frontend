@@ -1,8 +1,8 @@
 import { useCallback, useRef, useState } from 'react';
 import ReactFlow, { Background, Controls, MiniMap, BackgroundVariant } from 'reactflow';
 import { shallow } from 'zustand/shallow';
-import type { State } from 'redux/store';
-import { useStore } from 'redux/store';
+import type { State } from '../../zustand/store';
+import { useStore } from '../../zustand/store';
 import { InputNode, LLMNode, OutputNode, TextNode, PromptNode, DelayNode, MathNode, IfNode, NoteNode } from '../nodes';
 import 'reactflow/dist/style.css';
 

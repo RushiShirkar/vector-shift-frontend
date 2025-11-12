@@ -50,4 +50,3 @@ export const SuccessModal: React.FC<SuccessModalProps> = ({ open, onClose, data 
     </Modal>
   );
 };
-

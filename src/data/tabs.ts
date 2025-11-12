@@ -26,5 +26,3 @@ export const OTHER_NODES: NodeDef[] = [
   { type: 'condition', label: 'Condition', icon: SplitSquareHorizontal },
   { type: 'note', label: 'Note', icon: Notebook },
 ];
-
-

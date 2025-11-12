@@ -2,7 +2,7 @@ import { NodeProps } from 'reactflow';
 import { Textarea } from '../common/Textarea';
 import { X } from 'lucide-react';
 import { Button } from '../common/Button';
-import { useStore } from '../../redux/store';
+import { useStore } from '../../zustand/store';
 
 export const NoteNode: React.FC<NodeProps<{ id: string; nodeType: 'note'; text?: string }>> = ({ id }) => {
   const removeNode = useStore((s) => s.removeNode);
