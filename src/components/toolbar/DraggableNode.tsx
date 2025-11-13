@@ -19,30 +19,43 @@ export const DraggableNode: React.FC<{
   const disabledClasses = `
     cursor-default bg-gray-100 text-gray-400 border-gray-200 shadow-none`;
 
+  if (isDisabled) {
+    return (
+      <li className="list-none">
+        <div className={`${baseClasses} ${disabledClasses}`} aria-live="polite">
+          {Icon ? (
+            <Icon
+              className="mb-2 w-4 h-4 text-gray-400"
+            />
+          ) : null}
+          <span className="text-xs font-medium text-gray-400">
+            {label}
+          </span>
+        </div>
+      </li>
+    );
+  }
+
   return (
-    <div
-      className={`${baseClasses} ${isDisabled ? disabledClasses : interactiveClasses}`}
-      draggable={!isDisabled}
-      onDragStart={(event) => (isDisabled ? undefined : onDragStart(event, type))}
-      onDragEnd={(event) => (isDisabled ? undefined : onDragEnd(event))}
-      role={isDisabled ? undefined : 'button'}
-      aria-label={isDisabled ? undefined : `Drag ${label} node`}
-      aria-disabled={isDisabled}
-    >
-      {Icon ? (
-        <Icon
-          className={`mb-2 w-4 h-4 text-gray-600 transition-colors ${
-            isDisabled ? 'text-gray-400' : 'group-hover:text-brand-600'
-          }`}
-        />
-      ) : null}
-      <span
-        className={`text-xs font-medium transition-colors ${
-          isDisabled ? 'text-gray-400' : 'group-hover:text-brand-700'
-        }`}
+    <li className="list-none">
+      <button
+        type="button"
+        className={`${baseClasses} ${interactiveClasses} focus:outline-none focus:ring-2 focus:ring-brand-500`}
+        draggable
+        onDragStart={(event) => onDragStart(event, type)}
+        onDragEnd={(event) => onDragEnd(event)}
+        aria-label={`Drag ${label} node`}
+        aria-roledescription="draggable node"
       >
-        {label}
-      </span>
-    </div>
+        {Icon ? (
+          <Icon
+            className="mb-2 w-4 h-4 text-gray-600 transition-colors group-hover:text-brand-600"
+          />
+        ) : null}
+        <span className="text-xs font-medium transition-colors group-hover:text-brand-700">
+          {label}
+        </span>
+      </button>
+    </li>
   );
 };

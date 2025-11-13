@@ -64,12 +64,12 @@ export const PipelineToolbar: React.FC = () => {
           <Tabs tabs={tabs} value={tab} onChange={(v) => setTab(v as 'start' | 'other')} size="sm" />
         </div>
       </div>
-      <div 
+      <ul 
         className="
           flex gap-2 flex-nowrap overflow-x-auto md:flex-wrap md:overflow-x-visible scrollbar-thin 
-          scrollbar-thumb-slate-300 scrollbar-track-transparent pb-1
+          scrollbar-thumb-slate-300 scrollbar-track-transparent pb-1 list-none
         "
-        role="listbox"
+        role="list"
         aria-label="Available nodes"
       >
         {showNoNodes ? (
@@ -79,7 +79,7 @@ export const PipelineToolbar: React.FC = () => {
             <DraggableNode key={n.type} type={n.type} label={n.label} icon={n.icon} />
           ))
         )}
-      </div>
+      </ul>
     </div>
   );
 };
